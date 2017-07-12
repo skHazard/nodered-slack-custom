@@ -1,0 +1,52 @@
+[
+  {
+    "id": "67186e70.55671",
+    "type": "tab",
+    "label": "Flow 1"
+  },
+  {
+    "id": "6f9db639.c436b8",
+    "type": "inject",
+    "z": "67186e70.55671",
+    "name": "FireMsg",
+    "topic": "",
+    "payload": "I'm authenticated Node-RED custom git version running on Heroku!",
+    "payloadType": "str",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "x": 670.1000366210938,
+    "y": 175.8000030517578,
+    "wires": [
+      [
+        "7ed8e185.c41",
+        "d1d496e1.6ebf38"
+      ]
+    ]
+  },
+  {
+    "id": "7ed8e185.c41",
+    "type": "debug",
+    "z": "67186e70.55671",
+    "name": "",
+    "active": true,
+    "console": "false",
+    "complete": "false",
+    "x": 914.0999755859375,
+    "y": 174.60000610351562,
+    "wires": []
+  },
+  {
+    "id": "d1d496e1.6ebf38",
+    "type": "slack",
+    "z": "67186e70.55671",
+    "name": "NoderedToSlack",
+    "channelURL": "https://hooks.slack.com/services/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",
+    "username": "Node-RED",
+    "emojiIcon": "",
+    "channel": "",
+    "x": 931.0999755859375,
+    "y": 280.20001220703125,
+    "wires": []
+  }
+]

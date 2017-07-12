@@ -1,0 +1,11 @@
+#WebStorm
+ .idea/
+
+# Node build artifacts
+node_modules
+npm-debug.log
+
+.sessions.json
+flows_cred.json
+
+
