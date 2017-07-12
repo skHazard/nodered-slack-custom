@@ -115,7 +115,7 @@ module.exports = {
     //     clientSecret: "734e97c5ad76c699fb83b68c5e9b83420c714558",
     //     baseURL: "https://nodered-slack-docker.herokuapp.com/",
     //     users: [
-    //         { username: "hazard",permissions: ["*"]}
+    //         { username: "test",permissions: ["*"]}
     //     ]
     // }),
 
