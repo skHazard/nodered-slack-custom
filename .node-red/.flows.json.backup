@@ -98,8 +98,7 @@
         "y": 240,
         "wires": [
             [
-                "9989a9a3.9bea78",
-                "736b8dba.b3ee94"
+                "9989a9a3.9bea78"
             ]
         ]
     },
@@ -177,5 +176,41 @@
         "x": 1190,
         "y": 360,
         "wires": []
+    },
+    {
+        "id": "2d89e383.8ebacc",
+        "type": "file in",
+        "z": "67186e70.55671",
+        "name": "",
+        "filename": "content.json",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "x": 778.9000244140625,
+        "y": 269,
+        "wires": [
+            [
+                "aff40296.872fb"
+            ]
+        ]
+    },
+    {
+        "id": "66f4a89b.113238",
+        "type": "inject",
+        "z": "67186e70.55671",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 576.8999938964844,
+        "y": 265.8000183105469,
+        "wires": [
+            [
+                "2d89e383.8ebacc"
+            ]
+        ]
     }
 ]

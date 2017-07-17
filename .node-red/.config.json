@@ -441,6 +441,90 @@
      "file": "C:\\Users\\serhiy.kolesnyk\\WebstormProjects\\nodered-slack-custom\\node_modules\\node-red-node-twitter\\27-twitter.js"
     }
    }
+  },
+  "node-red-contrib-salesforce": {
+   "name": "node-red-contrib-salesforce",
+   "version": "0.0.5",
+   "local": false,
+   "nodes": {
+    "soql": {
+     "name": "soql",
+     "types": [
+      "soql"
+     ],
+     "enabled": true,
+     "local": false,
+     "module": "node-red-contrib-salesforce",
+     "file": "C:\\Users\\serhiy.kolesnyk\\WebstormProjects\\nodered-slack-custom\\node_modules\\node-red-contrib-salesforce\\soql.js"
+    },
+    "sosl": {
+     "name": "sosl",
+     "types": [
+      "sosl"
+     ],
+     "enabled": true,
+     "local": false,
+     "module": "node-red-contrib-salesforce",
+     "file": "C:\\Users\\serhiy.kolesnyk\\WebstormProjects\\nodered-slack-custom\\node_modules\\node-red-contrib-salesforce\\sosl.js"
+    },
+    "dml": {
+     "name": "dml",
+     "types": [
+      "dml"
+     ],
+     "enabled": true,
+     "local": false,
+     "module": "node-red-contrib-salesforce",
+     "file": "C:\\Users\\serhiy.kolesnyk\\WebstormProjects\\nodered-slack-custom\\node_modules\\node-red-contrib-salesforce\\dml.js"
+    },
+    "streaming": {
+     "name": "streaming",
+     "types": [
+      "streaming"
+     ],
+     "enabled": true,
+     "local": false,
+     "module": "node-red-contrib-salesforce",
+     "file": "C:\\Users\\serhiy.kolesnyk\\WebstormProjects\\nodered-slack-custom\\node_modules\\node-red-contrib-salesforce\\streaming.js"
+    },
+    "obm": {
+     "name": "obm",
+     "types": [
+      "obm"
+     ],
+     "enabled": true,
+     "local": false,
+     "module": "node-red-contrib-salesforce",
+     "file": "C:\\Users\\serhiy.kolesnyk\\WebstormProjects\\nodered-slack-custom\\node_modules\\node-red-contrib-salesforce\\obm.js"
+    },
+    "connection-config": {
+     "name": "connection-config",
+     "types": [
+      "connection-config"
+     ],
+     "enabled": true,
+     "local": false,
+     "module": "node-red-contrib-salesforce",
+     "file": "C:\\Users\\serhiy.kolesnyk\\WebstormProjects\\nodered-slack-custom\\node_modules\\node-red-contrib-salesforce\\connection-config.js"
+    }
+   }
+  },
+  "node-red-contrib-csvtojson": {
+   "name": "node-red-contrib-csvtojson",
+   "version": "0.0.2",
+   "local": false,
+   "nodes": {
+    "cvstojsonEx": {
+     "name": "cvstojsonEx",
+     "types": [
+      "csv to json ext"
+     ],
+     "enabled": true,
+     "local": false,
+     "module": "node-red-contrib-csvtojson",
+     "file": "C:\\Users\\serhiy.kolesnyk\\WebstormProjects\\nodered-slack-custom\\node_modules\\node-red-contrib-csvtojson\\csvtojson_ex.js"
+    }
+   }
   }
  },
  "_credentialSecret": "89c98e21b59e413ca65c65e69c477ce7b2f74ceac49fc8e13fc1ab81b09acb13"
