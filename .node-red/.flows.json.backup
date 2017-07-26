@@ -8,7 +8,7 @@
         "id": "4b51dce7.bc92b4",
         "type": "connection-config",
         "z": "",
-        "name": "Insert",
+        "name": "connect",
         "consumerKey": "3MVG9HxRZv05HarRhyDRlkI39o.YPKfW5mdtUML1MGHugDoor8qwpX46jt0DHz0DIKsievWzaoEHnUe6TjSwu",
         "consumerSecret": "7842800945916168755",
         "callbackUrl": "https://login.salesforce.com/services/oauth2/success",
@@ -17,17 +17,13 @@
         "password": "Zxvsym33sJ5iRWUGATWUKxI0ALAei3qqeJ"
     },
     {
-        "id": "d1d496e1.6ebf38",
-        "type": "slack",
-        "z": "67186e70.55671",
-        "name": "NoderedToSlack",
-        "channelURL": "https://hooks.slack.com/services/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",
-        "username": "Node-RED",
-        "emojiIcon": "",
-        "channel": "",
-        "x": 1500,
-        "y": 40,
-        "wires": []
+        "id": "e71d4b91.a6b188",
+        "type": "MySQLdatabase",
+        "z": "",
+        "host": "127.0.0.1",
+        "port": "3306",
+        "db": "test",
+        "tz": ""
     },
     {
         "id": "a9b82922.42e8e8",
@@ -41,8 +37,8 @@
         "box": "INBOX",
         "disposition": "Read",
         "repeat": "30",
-        "x": 570,
-        "y": 120,
+        "x": 101,
+        "y": 104.00000190734863,
         "wires": [
             [
                 "d81cc1d3.5a98f"
@@ -53,12 +49,12 @@
         "id": "9989a9a3.9bea78",
         "type": "debug",
         "z": "67186e70.55671",
-        "name": "attachments content",
+        "name": "parsed attachments content",
         "active": true,
         "console": "false",
         "complete": "payload",
-        "x": 1240,
-        "y": 120,
+        "x": 1062.000015258789,
+        "y": 103.00000095367432,
         "wires": []
     },
     {
@@ -66,14 +62,14 @@
         "type": "function",
         "z": "67186e70.55671",
         "name": "decodeContent",
-        "func": "\n// var arrOfUTFStrings = msg.attachments.map(function(attch) {\n//     return attch.content.toString('UTF-8');\n// });\n// var buf = Buffer.from(msg.attachments[0].content, \"base64\");\n// let json = JSON.stringify(buf);\n// msg.ccc = buf.toJSON();\n// node.log(json);\n// json = JSON.parse(json);\n\n// msg.payload = arrOfUTFStrings;\n// arrOfUTFStrings.forEach((UTFString) => {\n//     msg.payload = UTFString;\n//     func(msg);\n//     return msg;\n// });\n\nvar buf = msg.attachments[0].content;\n\nvar contentToStr = buf.toString();\n\nmsg.payload = contentToStr;\n\nreturn msg;\n\n\n    ",
+        "func": "msg.payload = [];\n\nmsg.attachments.forEach((attch) => {\n    let buf = attch.content;\n    let contentToStr = buf.toString();\n\n    msg.payload.push(contentToStr);\n});\n\nreturn msg;\n\n\n    ",
         "outputs": "1",
         "noerr": 0,
-        "x": 780,
-        "y": 120,
+        "x": 305.00000762939453,
+        "y": 102.00000190734863,
         "wires": [
             [
-                "2425473d.d0f4f8"
+                "a6925e88.0d3c4"
             ]
         ]
     },
@@ -94,11 +90,11 @@
         "includeColumns": "",
         "headers": "",
         "debug": false,
-        "x": 990,
-        "y": 240,
+        "x": 650,
+        "y": 100,
         "wires": [
             [
-                "9989a9a3.9bea78"
+                "934bf27c.8e69f"
             ]
         ]
     },
@@ -110,8 +106,8 @@
         "object": "Account",
         "action": "insert",
         "connection": "4b51dce7.bc92b4",
-        "x": 990,
-        "y": 360,
+        "x": 1033.000015258789,
+        "y": 263.00000381469727,
         "wires": [
             [
                 "aff40296.872fb"
@@ -123,14 +119,14 @@
         "type": "function",
         "z": "67186e70.55671",
         "name": "testAccount",
-        "func": "msg.payload = {\n  name: \"Ilon Mask\",\n  AccountNumber: \"CC213425\",\n  AccountSource: \"\",\n  Active__c: \"Yes\",\n  AnnualRevenue: \"9.5E8\",\n  Fax: \"(014) 427-4428\"\n};\n\n\nreturn msg;",
+        "func": "msg.payload = [\n  {\n    \"AccountNumber\": \"CC978213\",\n    \"Description\": \"Genomics company engaged in mapping and sequencing of the human genome and developing gene-based drugs\",\n    \"Fax\": \"(650) 867-9895\",\n    \"Industry\": \"Biotechnology\",\n    \"Name\": \"GenePoint\",\n    \"NumberOfEmployees\": \"265\",\n    \"OwnerId\": \"0050Y000001UkrCQAS\",\n    \"Ownership\": \"Private\",\n    \"Phone\": \"(650) 867-3450\",\n    \"Rating\": \"Cold\",\n    \"Website\": \"www.genepoint.com\"\n  },\n  {\n    \"AccountNumber\": \"CD355119-A\",\n    \"Description\": \"\",\n    \"Fax\": \"+44 191 4956620\",\n    \"Industry\": \"Energy\",\n    \"Name\": \"United Oil & Gas, UK\",\n    \"NumberOfEmployees\": \"24000\",\n    \"OwnerId\": \"0050Y000001UkrCQAS\",\n    \"Ownership\": \"Public\",\n    \"Phone\": \"+44 191 4956203\",\n    \"Rating\": \"\",\n    \"Website\": \"http://www.uos.com\"\n  },\n  {\n    \"AccountNumber\": \"CD355120-B\",\n    \"Description\": \"\",\n    \"Fax\": \"(650) 450-8820\",\n    \"Industry\": \"Energy\",\n    \"Name\": \"United Oil & Gas, Singapore\",\n    \"NumberOfEmployees\": \"3000\",\n    \"OwnerId\": \"0050Y000001UkrCQAS\",\n    \"Ownership\": \"Public\",\n    \"Phone\": \"(650) 450-8810\",\n    \"Rating\": \"\",\n    \"Website\": \"http://www.uos.com\"\n  },\n  {\n    \"AccountNumber\": \"CD451796\",\n    \"Description\": \"Edge, founded in 1998, is a start-up based in Austin, TX. The company designs and manufactures a device to convert music from one digital format to another. Edge sells its product through retailers and its own website.\",\n    \"Fax\": \"(512) 757-9000\",\n    \"Industry\": \"Electronics\",\n    \"Name\": \"Edge Communications\",\n    \"NumberOfEmployees\": \"1000\",\n    \"OwnerId\": \"0050Y000001UkrCQAS\",\n    \"Ownership\": \"Public\",\n    \"Phone\": \"(512) 757-6000\",\n    \"Rating\": \"Hot\",\n    \"Website\": \"http://edgecomm.com\"\n  },\n  {\n    \"AccountNumber\": \"CD656092\",\n    \"Description\": \"\",\n    \"Fax\": \"(336) 222-8000\",\n    \"Industry\": \"Apparel\",\n    \"Name\": \"Burlington Textiles Corp of America\",\n    \"NumberOfEmployees\": \"9000\",\n    \"OwnerId\": \"0050Y000001UkrCQAS\",\n    \"Ownership\": \"Public\",\n    \"Phone\": \"(336) 222-7000\",\n    \"Rating\": \"Warm\",\n    \"Website\": \"www.burlington.com\"\n  },\n  {\n    \"AccountNumber\": \"CC213425\",\n    \"Description\": \"\",\n    \"Fax\": \"(014) 427-4428\",\n    \"Industry\": \"Construction\",\n    \"Name\": \"Pyramid Construction Inc.\",\n    \"NumberOfEmployees\": \"2680\",\n    \"OwnerId\": \"0050Y000001UkrCQAS\",\n    \"Ownership\": \"Public\",\n    \"Phone\": \"(014) 427-4427\",\n    \"Rating\": \"\",\n    \"Website\": \"www.pyramid.com\"\n  },\n  {\n    \"AccountNumber\": \"CC634267\",\n    \"Description\": \"\",\n    \"Fax\": \"(785) 241-6201\",\n    \"Industry\": \"Consulting\",\n    \"Name\": \"Dickenson plc\",\n    \"NumberOfEmployees\": \"120\",\n    \"OwnerId\": \"0050Y000001UkrCQAS\",\n    \"Ownership\": \"Private\",\n    \"Phone\": \"(785) 241-6200\",\n    \"Rating\": \"\",\n    \"Website\": \"dickenson-consulting.com\"\n  },\n  {\n    \"AccountNumber\": \"CD439877\",\n    \"Description\": \"Chain of hotels and resorts across the US, UK, Eastern Europe, Japan, and SE Asia.\",\n    \"Fax\": \"(312) 596-1500\",\n    \"Industry\": \"Hospitality\",\n    \"Name\": \"Grand Hotels & Resorts Ltd\",\n    \"NumberOfEmployees\": \"5600\",\n    \"OwnerId\": \"0050Y000001UkrCQAS\",\n    \"Ownership\": \"Public\",\n    \"Phone\": \"(312) 596-1000\",\n    \"Rating\": \"Warm\",\n    \"Website\": \"www.grandhotels.com\"\n  },\n  {\n    \"AccountNumber\": \"CC947211\",\n    \"Description\": \"Commerical logistics and transportation company.\",\n    \"Fax\": \"(503) 421-7801\",\n    \"Industry\": \"Transportation\",\n    \"Name\": \"Express Logistics and Transport\",\n    \"NumberOfEmployees\": \"12300\",\n    \"OwnerId\": \"0050Y000001UkrCQAS\",\n    \"Ownership\": \"Public\",\n    \"Phone\": \"(503) 421-7800\",\n    \"Rating\": \"Cold\",\n    \"Website\": \"www.expressl&t.net\"\n  },\n  {\n    \"AccountNumber\": \"CD736025\",\n    \"Description\": \"Leading university in AZ offering undergraduate and graduate programs in arts and humanities, pure sciences, engineering, business, and medicine.\",\n    \"Fax\": \"(520) 773-9060\",\n    \"Industry\": \"Education\",\n    \"Name\": \"University of Arizona\",\n    \"NumberOfEmployees\": \"39000\",\n    \"OwnerId\": \"0050Y000001UkrCQAS\",\n    \"Ownership\": \"Other\",\n    \"Phone\": \"(520) 773-9050\",\n    \"Rating\": \"Warm\",\n    \"Website\": \"www.universityofarizona.com\"\n  },\n  {\n    \"AccountNumber\": \"CD355118\",\n    \"Description\": \"World's third largest oil and gas company.\",\n    \"Fax\": \"(212) 842-5501\",\n    \"Industry\": \"Energy\",\n    \"Name\": \"United Oil & Gas Corp.\",\n    \"NumberOfEmployees\": \"145000\",\n    \"OwnerId\": \"0050Y000001UkrCQAS\",\n    \"Ownership\": \"Public\",\n    \"Phone\": \"(212) 842-5500\",\n    \"Rating\": \"Hot\",\n    \"Website\": \"http://www.uos.com\"\n  },\n  {\n    \"AccountNumber\": \"\",\n    \"Description\": \"\",\n    \"Fax\": \"(415) 901-7002\",\n    \"Industry\": \"\",\n    \"Name\": \"sForce\",\n    \"NumberOfEmployees\": \"\",\n    \"OwnerId\": \"0050Y000001UkrCQAS\",\n    \"Ownership\": \"\",\n    \"Phone\": \"(415) 901-7000\",\n    \"Rating\": \"\",\n    \"Website\": \"www.sforce.com\"\n  },\n  {\n    \"AccountNumber\": \"CC213425\",\n    \"Description\": \"\",\n    \"Fax\": \"(014) 427-4428\",\n    \"Industry\": \"\",\n    \"Name\": \"Ilon Mask\",\n    \"NumberOfEmployees\": \"\",\n    \"OwnerId\": \"0050Y000001UksoQAC\",\n    \"Ownership\": \"\",\n    \"Phone\": \"\",\n    \"Rating\": \"\",\n    \"Website\": \"\"\n  }\n];\n\n\nreturn msg;\n  \n",
         "outputs": 1,
         "noerr": 0,
-        "x": 730,
-        "y": 360,
+        "x": 300.00000381469727,
+        "y": 382.0000057220459,
         "wires": [
             [
-                "b06e35ab.c6c968"
+                "eddca491.c59498"
             ]
         ]
     },
@@ -145,8 +141,8 @@
         "repeat": "",
         "crontab": "",
         "once": false,
-        "x": 540,
-        "y": 360,
+        "x": 126.00000762939453,
+        "y": 381.0000057220459,
         "wires": [
             [
                 "9a6042ef.4a146"
@@ -161,41 +157,94 @@
         "active": true,
         "console": "false",
         "complete": "payload",
-        "x": 950,
-        "y": 460,
+        "x": 652.0000114440918,
+        "y": 382.0000057220459,
         "wires": []
     },
     {
         "id": "aff40296.872fb",
         "type": "debug",
         "z": "67186e70.55671",
-        "name": "Output",
+        "name": "successOutput",
         "active": true,
         "console": "false",
         "complete": "true",
-        "x": 1190,
-        "y": 360,
+        "x": 1279.0000190734863,
+        "y": 262.00000381469727,
         "wires": []
     },
     {
-        "id": "2d89e383.8ebacc",
-        "type": "file in",
+        "id": "a6925e88.0d3c4",
+        "type": "split",
         "z": "67186e70.55671",
-        "name": "",
-        "filename": "content.json",
-        "format": "utf8",
-        "chunk": false,
-        "sendError": false,
-        "x": 778.9000244140625,
-        "y": 269,
+        "name": "multipleFilesSplitter",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 489.00000762939453,
+        "y": 179.00000286102295,
         "wires": [
             [
-                "aff40296.872fb"
+                "2425473d.d0f4f8"
             ]
         ]
     },
     {
-        "id": "66f4a89b.113238",
+        "id": "934bf27c.8e69f",
+        "type": "split",
+        "z": "67186e70.55671",
+        "name": "splitToSeparateObjects",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 791.0000076293945,
+        "y": 180.00000286102295,
+        "wires": [
+            [
+                "9989a9a3.9bea78",
+                "736b8dba.b3ee94"
+            ]
+        ]
+    },
+    {
+        "id": "eddca491.c59498",
+        "type": "split",
+        "z": "67186e70.55671",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 481.1667022705078,
+        "y": 383.0000057220459,
+        "wires": [
+            [
+                "b06e35ab.c6c968"
+            ]
+        ]
+    },
+    {
+        "id": "10e1710a.99678f",
+        "type": "debug",
+        "z": "67186e70.55671",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "payload",
+        "x": 828.0000076293945,
+        "y": 544.0000095367432,
+        "wires": []
+    },
+    {
+        "id": "1091069c.99eb69",
         "type": "inject",
         "z": "67186e70.55671",
         "name": "",
@@ -205,12 +254,120 @@
         "repeat": "",
         "crontab": "",
         "once": false,
-        "x": 576.8999938964844,
-        "y": 265.8000183105469,
+        "x": 126.00000381469727,
+        "y": 543.0000114440918,
         "wires": [
             [
-                "2d89e383.8ebacc"
+                "72ec4e59.44858"
             ]
         ]
+    },
+    {
+        "id": "72ec4e59.44858",
+        "type": "soql",
+        "z": "67186e70.55671",
+        "name": "SELECT",
+        "query": "SELECT AccountNumber, Name, Fax FROM Account",
+        "connection": "4b51dce7.bc92b4",
+        "x": 300.00000381469727,
+        "y": 543.0000114440918,
+        "wires": [
+            [
+                "9fe3b959.939ec8",
+                "c71e7f4.b4d268"
+            ]
+        ]
+    },
+    {
+        "id": "52bab7dc.98a6d8",
+        "type": "mysql",
+        "z": "67186e70.55671",
+        "mydb": "e71d4b91.a6b188",
+        "name": "DB",
+        "x": 648.0000076293945,
+        "y": 543.0000104904175,
+        "wires": [
+            [
+                "10e1710a.99678f"
+            ]
+        ]
+    },
+    {
+        "id": "9fe3b959.939ec8",
+        "type": "function",
+        "z": "67186e70.55671",
+        "name": "INSERT",
+        "func": "const data = [];\n\n   msg.payload.records.forEach((record) => {\n    let fields = record._fields;\n    let fieldValues = [];\n    for (let prop in fields) {\n      if(fields.hasOwnProperty(prop)){\n        fieldValues.push(fields[prop]);\n      }\n    }\n    data.push(fieldValues.join('@#&'));\n  });\n  \n  let queryValues = '';\n  data.forEach((fieldValues) => {\n    fieldValues = fieldValues.split('@#&');\n    let valuesToString = '';\n    fieldValues.forEach((propName) => {\n      valuesToString += propName ? `'${propName}',`: `${null},`;\n    });\n    valuesToString = valuesToString.slice(0, valuesToString.length-1);\n    queryValues += `(${valuesToString}),`;\n  });\n\nqueryValues = queryValues.slice(0, queryValues.length-1);\n\nmsg.topic = `INSERT INTO accounts (accountnumber, name, fax) VALUES ${queryValues}`;\n\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 462.00000762939453,
+        "y": 541.9999876022339,
+        "wires": [
+            [
+                "52bab7dc.98a6d8"
+            ]
+        ]
+    },
+    {
+        "id": "95ee867f.b67478",
+        "type": "debug",
+        "z": "67186e70.55671",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "true",
+        "x": 694.0000114440918,
+        "y": 701.0000095367432,
+        "wires": []
+    },
+    {
+        "id": "b347cad9.d69cc8",
+        "type": "function",
+        "z": "67186e70.55671",
+        "name": "test Insertion",
+        "func": " \nconst data = [];\n  for (let records in msg.payload) {\n      let arr = msg.payload[records];\n      for( let i = 0; i < arr.length; i++ ) {\n          let obj = arr[ i ];\n          for (let prop in obj) {\n              if(obj.hasOwnProperty(prop)){\n                  console.log(prop + \" = \" + obj[prop]);\n                data.push(obj[prop]);\n              }\n          }\n      }\n  }\n  \n  let lol = '';\n  for(let i = 0; i < data.length; i++) {\n      lol = lol +  `('${data[i]}'),`;\n  }\n  \n  lol = lol.slice(0, lol.length-1);\n  msg.topic = `INSERT INTO accounts (name) VALUES ${lol}`;\n\n\n    return msg;",
+        "outputs": "1",
+        "noerr": 0,
+        "x": 312.00000762939453,
+        "y": 700.0000133514404,
+        "wires": [
+            [
+                "95ee867f.b67478"
+            ]
+        ],
+        "outputLabels": [
+            "545"
+        ]
+    },
+    {
+        "id": "5d8db61e.0846e8",
+        "type": "inject",
+        "z": "67186e70.55671",
+        "name": "",
+        "topic": "",
+        "payload": "{     \"size\": 6,     \"records\": [         {\"name\": \"GenePoint\"},         {\"name\": \"United Oil & Gas, UK\"},         {\"name\": \"United Oil & Gas, Singapore\"},         {\"name\": \"Edge Communications\"},         {\"name\": \"Burlington Textiles Corp of America\"},         {\"name\": \"Pyramid Construction Inc.\"}     ] }",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 117.00000381469727,
+        "y": 702.0000133514404,
+        "wires": [
+            [
+                "b347cad9.d69cc8"
+            ]
+        ]
+    },
+    {
+        "id": "c71e7f4.b4d268",
+        "type": "debug",
+        "z": "67186e70.55671",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 470.16669845581055,
+        "y": 624.1111745834351,
+        "wires": []
     }
 ]

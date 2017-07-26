@@ -8,4 +8,6 @@ npm-debug.log
 .node-red/.sessions.json
 .node-red/flows_cred.json
 
+/content.json
+
 

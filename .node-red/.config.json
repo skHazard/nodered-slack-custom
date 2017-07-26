@@ -525,6 +525,24 @@
      "file": "C:\\Users\\serhiy.kolesnyk\\WebstormProjects\\nodered-slack-custom\\node_modules\\node-red-contrib-csvtojson\\csvtojson_ex.js"
     }
    }
+  },
+  "node-red-node-mysql": {
+   "name": "node-red-node-mysql",
+   "version": "0.0.16",
+   "local": false,
+   "nodes": {
+    "mysql": {
+     "name": "mysql",
+     "types": [
+      "MySQLdatabase",
+      "mysql"
+     ],
+     "enabled": true,
+     "local": false,
+     "module": "node-red-node-mysql",
+     "file": "C:\\Users\\serhiy.kolesnyk\\WebstormProjects\\nodered-slack-custom\\node_modules\\node-red-node-mysql\\68-mysql.js"
+    }
+   }
   }
  },
  "_credentialSecret": "89c98e21b59e413ca65c65e69c477ce7b2f74ceac49fc8e13fc1ab81b09acb13"

@@ -113,7 +113,7 @@ module.exports = {
     // adminAuth: require('node-red-auth-github')({
     //     clientID: "b752fac813cd0c469fd5",
     //     clientSecret: "734e97c5ad76c699fb83b68c5e9b83420c714558",
-    //     baseURL: "https://nodered-slack-docker.herokuapp.com/",
+    //     baseURL: "http://127.0.0.1:1880/#",
     //     users: [
     //         { username: "test",permissions: ["*"]}
     //     ]
