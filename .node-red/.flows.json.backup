@@ -325,7 +325,7 @@
         "type": "function",
         "z": "67186e70.55671",
         "name": "test Insertion",
-        "func": " \nconst data = [];\n  for (let records in msg.payload) {\n      let arr = msg.payload[records];\n      for( let i = 0; i < arr.length; i++ ) {\n          let obj = arr[ i ];\n          for (let prop in obj) {\n              if(obj.hasOwnProperty(prop)){\n                  console.log(prop + \" = \" + obj[prop]);\n                data.push(obj[prop]);\n              }\n          }\n      }\n  }\n  \n  let lol = '';\n  for(let i = 0; i < data.length; i++) {\n      lol = lol +  `('${data[i]}'),`;\n  }\n  \n  lol = lol.slice(0, lol.length-1);\n  msg.topic = `INSERT INTO accounts (name) VALUES ${lol}`;\n\n\n    return msg;",
+        "func": " \nconst data = [];\n  for (let records in msg.payload) {\n      let arr = msg.payload[records];\n      for( let i = 0; i < arr.length; i++ ) {\n          let obj = arr[ i ];\n          for (let prop in obj) {\n              if(obj.hasOwnProperty(prop)){\n                  console.log(prop + \" = \" + obj[prop]);\n                data.push(obj[prop]);\n              }\n          }\n      }\n  }\n  \n  let queryValues = '';\n  for(let i = 0; i < data.length; i++) {\n      lol = lol +  `('${data[i]}'),`;\n  }\n  \n  queryValues = queryValues.slice(0, lol.length-1);\n  msg.topic = `INSERT INTO accounts (name) VALUES ${queryValues}`;\n\n\n    return msg;",
         "outputs": "1",
         "noerr": 0,
         "x": 312.00000762939453,

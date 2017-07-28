@@ -36,7 +36,7 @@
         "port": "993",
         "box": "INBOX",
         "disposition": "Read",
-        "repeat": "30",
+        "repeat": "3000",
         "x": 101,
         "y": 104.00000190734863,
         "wires": [

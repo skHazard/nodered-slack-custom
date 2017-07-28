@@ -352,25 +352,6 @@
     }
    }
   },
-  "node-red-contrib-slack": {
-   "name": "node-red-contrib-slack",
-   "version": "0.1.2",
-   "local": false,
-   "nodes": {
-    "slack": {
-     "name": "slack",
-     "types": [
-      "slack",
-      "Slack Bot In",
-      "Slack Bot Out"
-     ],
-     "enabled": true,
-     "local": false,
-     "module": "node-red-contrib-slack",
-     "file": "C:\\Users\\serhiy.kolesnyk\\WebstormProjects\\nodered-slack-custom\\node_modules\\node-red-contrib-slack\\slackpost.js"
-    }
-   }
-  },
   "node-red-node-email": {
    "name": "node-red-node-email",
    "version": "0.1.23",
