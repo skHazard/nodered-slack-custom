@@ -524,6 +524,33 @@
      "file": "C:\\Users\\serhiy.kolesnyk\\WebstormProjects\\nodered-slack-custom\\node_modules\\node-red-node-mysql\\68-mysql.js"
     }
    }
+  },
+  "node-red-contrib-soapserver": {
+   "name": "node-red-contrib-soapserver",
+   "version": "0.0.1",
+   "local": false,
+   "nodes": {
+    "soapserver": {
+     "name": "soapserver",
+     "types": [
+      "soapserver"
+     ],
+     "enabled": true,
+     "local": false,
+     "module": "node-red-contrib-soapserver",
+     "file": "C:\\Users\\serhiy.kolesnyk\\WebstormProjects\\nodered-slack-custom\\node_modules\\node-red-contrib-soapserver\\soapserver.js"
+    },
+    "soapserverResponse": {
+     "name": "soapserverResponse",
+     "types": [
+      "soapserverResponse"
+     ],
+     "enabled": true,
+     "local": false,
+     "module": "node-red-contrib-soapserver",
+     "file": "C:\\Users\\serhiy.kolesnyk\\WebstormProjects\\nodered-slack-custom\\node_modules\\node-red-contrib-soapserver\\soapserverResponse.js"
+    }
+   }
   }
  },
  "_credentialSecret": "89c98e21b59e413ca65c65e69c477ce7b2f74ceac49fc8e13fc1ab81b09acb13"
