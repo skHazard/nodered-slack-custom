@@ -375,29 +375,13 @@
         "type": "soapserver",
         "z": "67186e70.55671",
         "name": "",
-        "port": "1881",
+        "port": "1880",
         "x": 107.16665649414062,
         "y": 863.8889150619507,
         "wires": [
             [
-                "946ca68b.ad7898"
-            ]
-        ]
-    },
-    {
-        "id": "1c27bc45.3ed724",
-        "type": "http in",
-        "z": "67186e70.55671",
-        "name": "",
-        "url": "127.0.0.1:1881/soap?wsdl",
-        "method": "get",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 144.16668701171875,
-        "y": 972.1111392974854,
-        "wires": [
-            [
-                "946ca68b.ad7898"
+                "2492f285.d957ae",
+                "d25aeb30.ee1908"
             ]
         ]
     },
@@ -418,8 +402,66 @@
         "type": "soapserverResponse",
         "z": "67186e70.55671",
         "name": "",
-        "x": 434.16669845581055,
-        "y": 866.2222490310669,
+        "x": 545.166675567627,
+        "y": 862.2222347259521,
+        "wires": []
+    },
+    {
+        "id": "2492f285.d957ae",
+        "type": "http request",
+        "z": "67186e70.55671",
+        "name": "GET Soap",
+        "method": "GET",
+        "ret": "obj",
+        "url": "https://nodered-slack-custom.herokuapp.com/soap?wsdl",
+        "tls": "",
+        "x": 328.1666717529297,
+        "y": 913.4444580078125,
+        "wires": [
+            [
+                "946ca68b.ad7898"
+            ]
+        ]
+    },
+    {
+        "id": "8da95b0c.faed98",
+        "type": "http in",
+        "z": "67186e70.55671",
+        "name": "GET Rest",
+        "url": "/rest",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 93.16667938232422,
+        "y": 1080.7777261734009,
+        "wires": [
+            [
+                "de136805.2376c8",
+                "6be20425.abd2dc"
+            ]
+        ]
+    },
+    {
+        "id": "de136805.2376c8",
+        "type": "debug",
+        "z": "67186e70.55671",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 353.16670989990234,
+        "y": 1161.3333644866943,
+        "wires": []
+    },
+    {
+        "id": "6be20425.abd2dc",
+        "type": "http response",
+        "z": "67186e70.55671",
+        "name": "HTTP Res",
+        "statusCode": "",
+        "headers": {},
+        "x": 350.16669845581055,
+        "y": 1083.4444742202759,
         "wires": []
     }
 ]
