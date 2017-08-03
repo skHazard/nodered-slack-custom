@@ -463,5 +463,46 @@
         "x": 350.16669845581055,
         "y": 1083.4444742202759,
         "wires": []
+    },
+    {
+        "id": "af9cd088.b8f61",
+        "type": "http in",
+        "z": "67186e70.55671",
+        "name": "POST Rest",
+        "url": "/rest",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 104.16667175292969,
+        "y": 1240.111083984375,
+        "wires": [
+            [
+                "8e9e7733.088998",
+                "5e5e3af8.e6eb64"
+            ]
+        ]
+    },
+    {
+        "id": "8e9e7733.088998",
+        "type": "http response",
+        "z": "67186e70.55671",
+        "name": "HTTP Res",
+        "statusCode": "",
+        "headers": {},
+        "x": 357.1666717529297,
+        "y": 1242.6666984558105,
+        "wires": []
+    },
+    {
+        "id": "5e5e3af8.e6eb64",
+        "type": "debug",
+        "z": "67186e70.55671",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 338.16665647923946,
+        "y": 1346.6666736602783,
+        "wires": []
     }
 ]
